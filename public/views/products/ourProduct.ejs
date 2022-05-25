@@ -1,0 +1,20 @@
+<section class="products" id="products">
+    <h1 class="heading"> our <span>products</span> </h1>
+ <div class="container"> 
+    <div class="product-slider">     
+       <% items.forEach(function(item) { %>
+            <div class="box">
+                <img src="<%= item.image %>" alt="">
+                <h3><%= item.name %></h3>
+                <div class="price"> ₹ <%= item.price %>/- KG </div>
+                <div class="stars">
+                    <% for (var j = 1; j <= item.rating ; j++ ) { %>
+                        <i class="fas fa-star"></i>
+                  <% } %>
+                </div>
+                <button data-item="<%= JSON.stringify(item) %>" class="btn add-to-cart">add to cart</button>
+            </div>
+       <% }) %>       
+    </div>
+</div>
+</section>

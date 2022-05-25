@@ -1,0 +1,43 @@
+{
+  "name": "vegitable-shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "engines": {
+    "node": "12.11.1",
+    "npm": "6.14.8"
+  },
+  "scripts": {
+    "server": "node server.js",
+    "start": "node server.js",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "production": "mix --production"
+  },
+  "author": "Swayam Prakash Barik",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "laravel-mix": "^6.0.43",
+    "noty": "^3.2.0-beta-deprecated",
+    "react-toastify": "^9.0.1",
+    "session-mongoose": "^0.5.2",
+    "toastr": "^2.1.4"
+  },
+  "devDependencies": {
+    "mongoose": "^6.3.4",
+    "nodemon": "^2.0.16",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.52.1",
+    "sass-loader": "^12.1.0"
+  }
+}
