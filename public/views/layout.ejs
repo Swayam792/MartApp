@@ -8,7 +8,7 @@
    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../css/app.css">
-    
+   
 </head>
 <body>
     
@@ -24,22 +24,17 @@
         <a href="/#blogs">blogs</a>
     </nav>
 
-    <div class="icons">
-        <div class="fas fa-bars" id="menu-btn"></div>
-        <div class="fas fa-search" id="search-btn"></div>
-        <a href="/cart"> <div class="fas fa-shopping-cart" id="cart-btn"></div></a>
-        <a href="/login"> <div class="fas fa-user" id="login-btn"></div></a>
+    <div class="icons">              
+        <a href="/cart"> <div class="fas fa-shopping-cart" id="cart-btn"></div></a> 
+        <% if(user) { %>
+            <form id="logout" action="/logout" method="POST"> <div class="fas fa-user-minus" id="login-btn" onclick="document.getElementById('logout').submit()"></div></form> 
+        <% } else { %>
+            <a href="/login"> <div class="fas fa-user-plus" id="login-btn"></div></a>
+        <% } %> 
     </div>
 
-    <form action="" class="search-form">
-        <input type="search" id="search-box" placeholder="search here...">
-        <label for="search-box" class="fas fa-search"></label>
-    </form>
-
-    <div class="shopping-cart">
-        
-    </div>
- 
+  
+   
 
 </header>
   <%-body %>
@@ -86,7 +81,7 @@
 </section>
 
 <!-- Footer Section Ends -->
-<script  src="../js/app.js"></script>
+<script  src="/js/app.js"></script>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 

@@ -1,0 +1,65 @@
+<section class="products" id="products">
+    <h1 class="heading"> All <span>products</span> </h1>
+    
+ <div class="container"> 
+    <div class="product-slider">     
+       <% items.forEach(function(item) { %>
+            <div class="box">
+                <img src="<%= item.image %>" alt="">
+                <h3><%= item.name %></h3>
+                <div class="price"> ₹ <%= item.price %>/- KG </div>
+                <div class="stars">
+                    <% for (var j = 1; j <= item.rating ; j++ ) { %>
+                        <i class="fas fa-star"></i>
+                  <% } %>
+                </div>
+                <p style="font-size: 13px;">ID: <%= item._id %></p>
+            </div>
+       <% }) %>       
+    </div>
+</div>
+
+  <div class="operation-btns">
+      <p style="font-size: 20px; display: flex; align-items: center; color: orange; font-weight: 800;">Click For Action :</p>
+      <button class="btn" id="post-btn">POST</button>
+      <button class="btn" id="post-update-btn">UPDATE</button>
+      <button class="btn" id="post-delete-btn">DELETE</button>
+  </div>
+
+  <div class="post-actions">
+      <form action="/admin/post-item" method="POST" id="post-product" class="login-container" style="width: 100%;  margin-top: 20px; border-radius: 7px;">
+        <p style="width:100%; text-align:center; font-size: 24px; color: orange;">Create a Post</p>
+        <span style="font-size: 13px; color:red;">*fill all the feild</span>           
+          <span>Product Name</span>
+          <input name="name" type="text" placeholder="Enter the Product Name" style="padding: 10px; font-size: 16px;">
+          <span>Price</span>
+          <input name="price" type="number" placeholder="Enter the Product Price in Rupee" style="padding: 10px; font-size: 16px;">
+          <span>Image</span>
+          <input name="image" type="text" placeholder="Enter the Image Link" style="padding: 10px; font-size: 16px;">
+          <button type="submit" class="btn">POST</button>
+      </form>
+
+      <form action="/admin/update-post" method="POST" id="update-post" class="login-container hidden" style="width: 100%;  margin-top: 20px; border-radius: 7px;">
+        <p style="width:100%; text-align:center; font-size: 24px; color: orange;">Update Post</p>
+        <span style="font-size: 13px; color:red;">*fill only those field which you want to update</span>
+        <span>ID*</span>
+        <input name="id" type="text" placeholder="Enter the Item ID" style="padding: 10px; font-size: 16px;">
+        <span>Product Name</span>
+        <input name="name" type="text" placeholder="Enter the Product Name" style="padding: 10px; font-size: 16px;">
+        <span>Price</span>
+        <input name="price" type="number" placeholder="Enter the Product Price in Rupee" style="padding: 10px; font-size: 16px;">
+        <span>Image</span>
+        <input name="image" type="text" placeholder="Enter the Image Link" style="padding: 10px; font-size: 16px;">
+        <button type="submit" class="btn">UPADTE</button>
+    </form>
+     
+    <form action="/admin/delete-post" method="POST" class="login-container hidden" id="delete-post" style="width: 100%;  margin-top: 20px; border-radius: 7px;">
+        <p style="width:100%; text-align:center; font-size: 24px; color: orange;">Delete Item</p>
+        
+        <span>ID*</span>
+        <input name="id" type="text" placeholder="Enter the Item ID to be deleted" style="padding: 10px; font-size: 16px;">
+        
+        <button type="submit" class="btn">DELETE</button>
+    </form>
+  </div>
+</section>

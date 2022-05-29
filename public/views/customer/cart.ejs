@@ -30,17 +30,23 @@
                    <h1>₹<%= session.cart.totalPrice %></h1> 
                 </p>
             </div>
+            <% if(user) { %>
             <div class="payment-form">
-                <form action="/cart" METHOD="POST" class="cart-form">
+                <form action="/post-order" METHOD="POST" class="cart-form">
                     <span>Address</span>
-                    <input type="text" placeholder="Enter Your Address">
+                    <input name="address" type="text" placeholder="Enter Your Address">
                     <span>Phone Number</span>
-                    <input type="phone" placeholder="Enter Your Phone number">
+                    <input name="phone" type="phone" placeholder="Enter Your Phone number">
                     <button type="submit" class="payment-btn">
                         <h3> Place Order</h1>
                     </button>
                 </form>
             </div>
+            <% } else { %>
+                <div class="login-shop">
+                   <a href="/login"><button>LogIn to Shop</button></a> 
+                </div>             
+            <% } %>
         </div>
         <% } else { %>
             <div class="cart-empty">

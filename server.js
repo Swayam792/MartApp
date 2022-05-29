@@ -4,6 +4,9 @@ const expressLayouts = require('express-ejs-layouts')
 const path = require('path');
 const mongoose = require('mongoose');
 const MongoDbStore = require('connect-mongo');
+const flash = require('express-flash');
+const passport = require('passport');
+const { Server } = require('socket.io')
 
 const app = express();
 
@@ -21,6 +24,7 @@ mongoose.connection
 let mongoStore =  MongoDbStore.create({
     mongoUrl: process.env.MONGO_URL
 });
+ 
 
 const cookieParser = require("cookie-parser");
 const session = require('express-session');
@@ -28,15 +32,24 @@ const session = require('express-session');
 const Oneday = 1000 * 60 * 60 * 24 ;
 app.use(session({
     secret: process.env.COOKIE_SECRET,
-    saveUninitialized:true,
+    resave: false,
     store: mongoStore,
-    cookie: { maxAge: Oneday },
-    resave: false 
-}))
+    saveUninitialized: false,
+    cookie: { maxAge: Oneday }
+}));
+
+const passportInit = require('./app/config/passport')
+passportInit(passport);
+app.use(passport.initialize())
+app.use(passport.session())
+
+
+app.use(flash());
 
 const productRouter = require('./routes/productRouter');
 const authRouter = require('./routes/authRouter');
 const customerRouter =require('./routes/customerRouter')
+const adminRouter = require('./routes/adminRouter')
 
 // Asserts
 app.use(express.static('public'));
@@ -62,7 +75,11 @@ app.get('/', (req, res) => {
 app.use('/', productRouter);
 app.use('/', authRouter);
 app.use('/', customerRouter);
+app.use('/', adminRouter);
 
 const server = app.listen(PORT, () => {
     console.log(`Server running at port ${PORT}`);
 });
+
+
+const io = new Server(server);

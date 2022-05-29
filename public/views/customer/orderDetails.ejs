@@ -1,0 +1,68 @@
+<section class="order-details">
+    <div class="center order-ids" style="font-size: 18px">
+        <h1 class="heading"> <span>Order ID</span> #<%= order._id %> </h1>
+    </div>
+
+    <div class="item-flex">
+        <div class="cart-fill">
+            <%  for(let items of Object.values(order.items.items)) {%>
+                <div class="cart-item">
+                    <img class="cart-item-img items" src="<%= items.item.image %>" alt="">
+                    <p class="item-name items" style="font-size: 15px">
+                        <%= items.item.name %>
+                    </p>
+                    <p class="item-piece items" style="font-size: 15px">
+                        <%= items.qty %> KG
+                    </p>
+                    <p class="item price items" style="font-size: 15px"><b> ₹<%= (items.item.price)*(items.qty) %> </b>
+                    </p>
+                </div>
+                <% } %>
+        </div>
+
+
+        <div class="center" style="width: 110%; font-size: 14px;">
+            <h1>Total Amount</h1>
+            <h1> ₹<%= order.items.totalPrice %>
+            </h1>
+        </div>
+
+    </div>
+    <div class="center"  style="width: 110%; font-size: 14px;">
+        <h1 style="font-size: 18px; color: orangered; margin-top: 20px; ">Track Delivery Status:</h1>  
+        <h1  ><%= order.status %></h1>      
+    </div>
+      
+    
+    <!-- <div class="status-bar">
+        <div class="status-content">
+            <div class="status-point darken">
+            </div>
+            <span class="darken-font" style="font-size: 13px;">Order Picked</span>            
+            <span class="status darken-font">Completed</span>
+        </div>
+        <div class="status-content">
+            <div class="status-point">
+            </div>
+            <span style="font-size: 13px;">Order Packed</span>
+            
+            <span class="status">Completed</span>
+        </div>
+        <div class="status-content">
+            <div class="status-point">
+            </div>
+            <span style="font-size: 13px;">Order Shipped</span>
+             
+            <span class="status">Completed</span>
+        </div>
+        <div class="status-content">
+            <div class="status-point">
+            </div>
+            <span style="font-size: 13px;">Order Delivered</span>
+            
+            <span class="status">Completed</span>
+        </div>
+    </div> -->
+
+
+</section>

@@ -1,0 +1,49 @@
+<section class="track-order">
+    <h1 class="heading"> My <span>Orders</span> </h1>
+
+    <div class="order-container">
+        <div class="half">
+            <h1>Order ID</h1>
+        </div>
+        
+        <div class="half">
+            <h1>Order Link</h1>
+        </div>  
+       
+    </div>
+    <% for(let order of Object.values(orders)) { %>
+    <div class="order-container"> 
+        <div class="half order-ids">
+             <p><%= order._id %></p>
+        </div>
+        <div class="half order-links">
+            <a href="/track-order/<%= order._id %>">Get My Order Details</a>
+        </div>
+    </div>   
+
+    <% } %>
+    <!-- <div class="order-container"> 
+        <div class="half order-ids">
+             <p>hgvdyfyskks765379836782</p>
+        </div>
+        <div class="half order-links">
+            <a href="">Get My Order Details</a>
+        </div>
+    </div>   
+    <div class="order-container"> 
+        <div class="half order-ids">
+             <p>hgvdyfyskks765379836782</p>
+        </div>
+        <div class="half order-links">
+            <a href="">Get My Order Details</a>
+        </div>
+    </div>   
+    <div class="order-container"> 
+        <div class="half order-ids">
+             <p>hgvdyfyskks765379836782</p>
+        </div>
+        <div class="half order-links">
+            <a href="">Get My Order Details</a>
+        </div>
+    </div>    -->
+</section>

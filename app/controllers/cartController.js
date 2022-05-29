@@ -3,7 +3,7 @@
 const cartController = () => {
      return {
         index(req, res){
-           return res.render('./customer/cart');
+           return res.render('customer/cart');
         },
         update(req,res){
            
@@ -29,7 +29,7 @@ const cartController = () => {
                 cart.totalQty = cart.totalQty + 1;
                 cart.totalPrice =  cart.totalPrice + parseInt(req.body.price);
             }
-            req.session.cart = cart;
+            // req.session.cart = cart;
             return res.json({ totalQty: req.session.cart.totalQty });
         },
         delete(req, res){
@@ -41,11 +41,10 @@ const cartController = () => {
             cart.totalPrice = cart.totalPrice - price;   
             cart.totalQty = cart.totalQty - qty; 
             delete cart.items[req.body.item._id]
-            req.session.cart = cart;       
+            //req.session.cart = cart;       
             if(cart.totalQty == 0){
                 delete req.session.cart;
-            }      
-             
+            }            
             res.redirect('/cart'); 
         }
      }
