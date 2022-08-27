@@ -936,6 +936,7 @@ box-shadow: 0px 0px 24px -8px rgba(0,0,0,0.75);
     color:var(--orange);
 }
  
+ 
 /* media queries  */
 
 @media (max-width:991px){
@@ -982,6 +983,10 @@ box-shadow: 0px 0px 24px -8px rgba(0,0,0,0.75);
         display: block;
     }
 
+    .icons div{
+        font-size: 10px;
+    }
+
     .login-container{
         width: 55%;
     }
@@ -1001,7 +1006,34 @@ box-shadow: 0px 0px 24px -8px rgba(0,0,0,0.75);
     .login-shop a button{
         font-size: 14px;
         width: 30%;
-    }    
+    }     
+
+    .heading{
+        font-size: 20px;
+    } 
+    .order-container .half h1{
+        font-size: 18px;
+    }
+    .order-container .half p{
+        font-size: 15px;
+    }
+    .order-container .order-links{
+        font-size: 13px;
+    }
+    .order-container .order-links a{
+        width: 80%;
+    }
+
+    .order-ids .heading{
+        font-size: 16px;
+    }
+    .item-flex .center h1{
+        font-size: 16px;
+    }
+    .item-details h1{
+        font-size: 14px;
+    }   
+    
 }
 
 @media (max-width:450px){
@@ -1038,4 +1070,14 @@ box-shadow: 0px 0px 24px -8px rgba(0,0,0,0.75);
         font-size: 14px;
         width: 50%;
     }    
+    .order-container .half p{
+        font-size: 13px;
+    }
+    .order-container .order-links{
+        font-size: 12px;
+    }
+    .order-container .order-links a{
+        width: 80%;
+    }
+
 }
