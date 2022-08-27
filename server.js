@@ -9,6 +9,8 @@ const flash = require('express-flash');
 const passport = require('passport');
 const { Server } = require('socket.io');
 const Emitter = require('events');
+const cookieParser = require("cookie-parser");
+const session = require('express-session');
 
 const app = express();
 
@@ -32,8 +34,7 @@ const eventEmitter = new Emitter();
 app.set('eventEmitter' , eventEmitter);
  
 
-const cookieParser = require("cookie-parser");
-const session = require('express-session');
+ 
 
 const Oneday = 1000 * 60 * 60 * 24 ;
 app.use(session({
