@@ -15,7 +15,17 @@ const deleteItemForm = document.querySelector('#delete-post');
 const updateItemForm = document.querySelector('#update-post');
 const cancelOrderBtn = document.querySelector('#cancel-order');
 const paymentBtn = document.querySelector('#payment-btn');
- 
+
+// Logic for responsive navbar   
+let navbar = document.querySelector('.navbar');
+
+document.querySelector('#menu-btn').onclick = () =>{
+    navbar.classList.toggle('active');      
+}
+
+window.onscroll = () =>{      
+    navbar.classList.remove('active');
+} 
  
 //Making axios post request for updating the cart
 const updateCart = (item) => {

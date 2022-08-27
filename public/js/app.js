@@ -30053,7 +30053,18 @@ var postItemForm = document.querySelector('#post-product');
 var deleteItemForm = document.querySelector('#delete-post');
 var updateItemForm = document.querySelector('#update-post');
 var cancelOrderBtn = document.querySelector('#cancel-order');
-var paymentBtn = document.querySelector('#payment-btn'); //Making axios post request for updating the cart
+var paymentBtn = document.querySelector('#payment-btn'); // Logic for responsive navbar   
+
+var navbar = document.querySelector('.navbar');
+
+document.querySelector('#menu-btn').onclick = function () {
+  navbar.classList.toggle('active');
+};
+
+window.onscroll = function () {
+  navbar.classList.remove('active');
+}; //Making axios post request for updating the cart
+
 
 var updateCart = function updateCart(item) {
   axios__WEBPACK_IMPORTED_MODULE_0___default().post('/update-cart', item).then(function () {

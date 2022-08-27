@@ -935,10 +935,7 @@ box-shadow: 0px 0px 24px -8px rgba(0,0,0,0.75);
 .footer .credit span{
     color:var(--orange);
 }
-
  
-
-
 /* media queries  */
 
 @media (max-width:991px){
@@ -954,11 +951,9 @@ box-shadow: 0px 0px 24px -8px rgba(0,0,0,0.75);
     section{
         padding:2rem;
     }
-
 }
 
 @media (max-width:768px){
-
     #menu-btn{
         display: inline-block;
     }
@@ -987,6 +982,26 @@ box-shadow: 0px 0px 24px -8px rgba(0,0,0,0.75);
         display: block;
     }
 
+    .login-container{
+        width: 55%;
+    }
+
+    .signup-container{
+        width: 55%;
+    }
+
+    .container{
+        font-size: 18px;
+    }
+
+    .container, .delete-btn, .total-amount h1{
+        font-size: 14px;
+    }      
+
+    .login-shop a button{
+        font-size: 14px;
+        width: 30%;
+    }    
 }
 
 @media (max-width:450px){
@@ -1007,4 +1022,20 @@ box-shadow: 0px 0px 24px -8px rgba(0,0,0,0.75);
         margin: 2rem auto;
     }
 
+    .login-container{
+        width: 80%;
+    }
+
+    .signup-container{
+        width: 80%;
+    }
+
+    .container, .delete-btn, .total-amount h1{
+        font-size: 14px;
+    }      
+
+    .login-shop a button{
+        font-size: 14px;
+        width: 50%;
+    }    
 }

@@ -14,7 +14,7 @@
     
 <header class="header">
 
-    <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> Vegi Go </a>
+    <a href="/" class="logo"> <i class="fas fa-shopping-basket"></i> Vegi Go </a>
 
     <nav class="navbar">
         <a href="/">Home</a>
@@ -32,7 +32,8 @@
         <% } %>
     </nav>
 
-    <div class="icons">              
+    <div class="icons">  
+        <div class="fas fa-bars" id="menu-btn"></div>            
         <a href="/cart"> <div class="fas fa-shopping-cart" id="cart-btn"></div></a> 
         <% if(user) { %>
             <form id="logout" action="/logout" method="POST"> <div class="fas fa-user-minus" id="login-btn" onclick="document.getElementById('logout').submit()"></div></form> 
