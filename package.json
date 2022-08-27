@@ -9,7 +9,7 @@
   },
   "scripts": {
     "server": "node server.js",
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "development": "mix",
     "watch": "mix watch",
     "watch-poll": "mix watch -- --watch-options-poll=1000",
@@ -36,11 +36,14 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.1.2",
     "population": "^2.0.0",
-    "react-toastify": "^9.0.1",
+    "razorpay": "^2.8.2",
+    "react-toastify": "^9.0.4",
     "req-flash": "^0.0.3",
     "session-mongoose": "^0.5.2",
+    "simple-notify": "^0.5.5",
     "socket.io": "^4.5.1",
-    "toastr": "^2.1.4"
+    "toastr": "^2.1.4",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "mongoose": "^6.3.4",

@@ -1,26 +1,44 @@
 <section class="track-order">
     <h1 class="heading"> My <span>Orders</span> </h1>
 
+    <!-- <div class="order-card" id="order-card">
+        <div class="order-img">
+            <img src="../../img/order-img.png" alt="" style="margin-left: 20px; width:100px; height: 100px; margin-right: 30px;">
+        </div>
+
+        <div class="order-desc">
+            <h1 class="order-title">1e2443634426</h1>
+            <h2 class="order-price">₹ 400</h2>
+            <h3 class="order-stat">Delivered by May 20</h3>
+        </div>
+    </div> -->
+    
+  <% if(orders.length) {%>
     <div class="order-container">
         <div class="half">
             <h1>Order ID</h1>
-        </div>
-        
+        </div>        
         <div class="half">
             <h1>Order Link</h1>
         </div>  
        
     </div>
-    <% for(let order of Object.values(orders)) { %>
-    <div class="order-container"> 
-        <div class="half order-ids">
-             <p><%= order._id %></p>
-        </div>
-        <div class="half order-links">
-            <a href="/track-order/<%= order._id %>">Get My Order Details</a>
-        </div>
-    </div>   
+    
+        <% for(let order of Object.values(orders)) { %>
+        <div class="order-container"> 
+            <div class="half order-ids">
+                <p><%= order._id %></p>
+            </div>
+            <div class="half order-links">
+                <a href="/track-order/<%= order._id %>">Get My Order Details</a>
+            </div>
+        </div>   
 
+
+
+        <% } %>
+    <% } else { %>
+         <h2 style="text-align: center; font-size: 20px">No Order Till Now</h2>
     <% } %>
     <!-- <div class="order-container"> 
         <div class="half order-ids">

@@ -6,11 +6,16 @@ const orderController = () =>{
         async index (req, res) {
             const orders = await Order.find({ customerId : req.user._id}, null, {sort : { 'createdAt': -1 }});            
              res.header('Cache-Control', 'no-store')
-             return res.render('./customer/orderTracking', {orders : orders})
+             res.render('customer/orderTracking', {orders : orders})
          },
          async orderDetails(req, res){
-            const order = await Order.find({ _id : req.params.order_id});             
-            return res.render('./customer/orderDetails', {order : order[0]})
+            const order = await Order.findById(req.params.order_id);
+                
+            if(order && req.user._id.toString() === order.customerId.toString()){
+               return res.render('customer/orderDetails', {order : order});
+            }
+            return res.redirect('/');
+             
          },
          postOrder(req, res){
             const {address, phone} = req.body;
@@ -29,16 +34,32 @@ const orderController = () =>{
 
             order.save()
             .then((result) => {
-                console.log("Order save successfully", result);
-                req.session.cart.TotalQty = 0;
-                if( req.session.cart.TotalQty == 0){
-                    delete req.session.cart;
-                }
-                return res.redirect('/');
+                Order.populate(result, { path : 'customerId' }, (err, result) => {
+                    req.session.cart.TotalQty = 0;
+                    if( req.session.cart.TotalQty == 0){
+                        delete req.session.cart;
+                    }
+                    const eventEmitter = req.app.get('eventEmitter')
+                    eventEmitter.emit('orderChanged', "add" , result);
+                    return res.redirect('/');                    
+                })
+                // console.log("Order save successfully", result);
             }).catch((err) => {
                 console.log("Error Occure", err);
                 return res.redirect('/cart')
             })
+         },
+         cancelOrder (req, res) {
+             const orderId = req.body._id;          
+              
+             Order.findByIdAndDelete(orderId).then((result) =>{                
+                const eventEmitter = req.app.get('eventEmitter')
+                eventEmitter.emit('orderChanged', "delete" , result);    
+             }).catch((err) =>{
+                console.log(err);
+             })
+              
+             res.redirect('/track-order');
          }
      }
 }

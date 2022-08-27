@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vegi Go</title>
+    <link type="text/css" rel="stylesheet" href="../css/app.css">
    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="../css/app.css">
-   
+    
 </head>
 <body>
     
@@ -17,17 +17,26 @@
     <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> Vegi Go </a>
 
     <nav class="navbar">
-        <a href="/">home</a>
-        <a href="/products">products</a>
-        <a href="/#features">features</a>
-        <a href="/#categories">categories</a>        
-        <a href="/#blogs">blogs</a>
+        <a href="/">Home</a>
+        <% if(user?.role === 'admin') { %>
+            <a href="/admin/manage-items">My Products</a>
+            <a href="/admin/manage-orders">All Orders</a>
+        <% } else { %>
+            <a href="/products">Products</a>
+            <a href="/#features">Features</a>
+            <a href="/#categories">Categories</a>        
+            <a href="/#blogs">Blogs</a>
+        <% } %>
+        <% if(user && user?.role != 'admin') { %>
+           <a href="/track-order">My Orders</a>
+        <% } %>
     </nav>
 
     <div class="icons">              
         <a href="/cart"> <div class="fas fa-shopping-cart" id="cart-btn"></div></a> 
         <% if(user) { %>
             <form id="logout" action="/logout" method="POST"> <div class="fas fa-user-minus" id="login-btn" onclick="document.getElementById('logout').submit()"></div></form> 
+            <h2 class="center" style="color: orange; margin-left: 5px;"><%= user.username %></h2>
         <% } else { %>
             <a href="/login"> <div class="fas fa-user-plus" id="login-btn"></div></a>
         <% } %> 
@@ -81,12 +90,16 @@
 </section>
 
 <!-- Footer Section Ends -->
+<script src="/socket.io/socket.io.js"></script>
+
 <script  src="/js/app.js"></script>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+ 
 <!-- custom js file link  -->
  
 

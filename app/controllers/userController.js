@@ -10,37 +10,24 @@ const userController = () =>{
         async postRegister (req, res){
              
             const {username, email, password} = req.body; 
-            console.log("huigdu");
-            
+             
             // Check that every field to filled
             if(!username || !email || !password){
                 req.flash('error', 'All field Required');
                 req.flash('username', username);
                 req.flash('email', email);
+                return res.redirect('/login');
+            } 
+            
+            let f = false;
+
+            // check email already exist or not
+            var userExist = await User.find({email : email});
+            if(userExist){
+                req.flash('error', 'Email already taken');           
                 return res.redirect('/register');
             }
-           
-            // Check username already exist or not
-            User.exists({username: username}, (err, result) => {
-                req.flash('error','Username already exist!');
-                req.flash('username', username);
-                req.flash('email', email);
-                return res.redirect('/register');
-            });
-            console.log("nothing 1")
-            // check email already exist or not
-            await User.exists({email : email}, (err, result) => {
-                if(result){
-                    req.flash('error', 'Email already taken!');
-                    req.flash('username', username);
-                    req.flash('email', email);
-                    return res.redirect('/register');
-                }
-                 
-            });
-
-            console.log("nothing 2")
-            
+   
             // Hash the password
             const hashPassword = await bcrypt.hash(password, 10 );
             
@@ -49,7 +36,8 @@ const userController = () =>{
                 email: email,
                 password: hashPassword
             });
-
+            
+            
             user.save()
             .then(() => {
                 return res.redirect('/');
@@ -58,6 +46,8 @@ const userController = () =>{
                 console.log(err);
                 return res.redirect('/register');
             })        
+            
+             
         },
         getLogin (req, res){
             return res.render('./auth/login')
@@ -67,7 +57,7 @@ const userController = () =>{
             
             if(!email || !password){
                 req.flash('error', 'All field Required');
-                req.flash('email', email);                 
+                // req.flash('email', email);                 
                 return res.redirect('/login');
             }
 

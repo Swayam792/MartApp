@@ -9,44 +9,55 @@
             <hr>
             <div class="item-flex">
                 <div class="cart-fill">
-                 <% for (let items of Object.values(session.cart.items) ) {%>
-                    <div class="cart-item">
-                        <img class="cart-item-img items" src="<%= items.item.image %>" alt="">
-                        <p class="item-name items"><%= items.item.name %></p>
-                        <p class="item-piece items"><%= items.qty %> KG</p>
-                        <p class="item price items"><b> ₹<%= (items.item.price)*(items.qty) %> </b> </p>
-                        <button data-item="<%= JSON.stringify(items) %>" class="items delete-btn"> DELETE </button>
-                    </div>
-                <% } %>
+                    <% for (let items of Object.values(session.cart.items) ) {%>
+                        <div class="cart-item">
+                            <img class="cart-item-img items" src="<%= items.item.image %>" alt="">
+                            <p class="item-name items">
+                                <%= items.item.name %>
+                            </p>
+                            <p class="item-piece items">
+                                <%= items.qty %> KG
+                            </p>
+                            <p class="item price items"><b> ₹<%= (items.item.price)*(items.qty) %> </b> </p>
+                            <button data-item="<%= JSON.stringify(items) %>" class="items delete-btn"> DELETE </button>
+                        </div>
+                        <% } %>
                 </div>
-                
+
             </div>
         </div>
-        
+
         <div class="payment">
             <div class="total-amount">
                 <h1>Total Amount: </h1>
                 <p class="amount">
-                   <h1>₹<%= session.cart.totalPrice %></h1> 
+                <h1>₹<%= session.cart.totalPrice %>
+                </h1>
                 </p>
             </div>
             <% if(user) { %>
-            <div class="payment-form">
-                <form action="/post-order" METHOD="POST" class="cart-form">
-                    <span>Address</span>
-                    <input name="address" type="text" placeholder="Enter Your Address">
-                    <span>Phone Number</span>
-                    <input name="phone" type="phone" placeholder="Enter Your Phone number">
-                    <button type="submit" class="payment-btn">
-                        <h3> Place Order</h1>
-                    </button>
-                </form>
-            </div>
-            <% } else { %>
-                <div class="login-shop">
-                   <a href="/login"><button>LogIn to Shop</button></a> 
-                </div>             
-            <% } %>
+                <div class="payment-form">
+                    <form action="/post-order" METHOD="POST" class="cart-form">
+                        <span>Address</span>
+                        <input name="address" type="text" placeholder="Enter Your Address">
+                        <span>Phone Number</span>
+                        <input name="phone" type="phone" placeholder="Enter Your Phone number">                                                  
+                        <button type="submit" class="payment-btn">
+                            <h3> Place Order</h1>
+                            </button>
+                        </form> 
+                                                   
+                        <button type="submit" class="payment-btn" id="payment-btn">
+                            <h3> Pay Now </h1>
+                        </button>  
+                        
+                      
+                </div>
+                <% } else { %>
+                    <div class="login-shop">
+                        <a href="/login"><button>LogIn to Shop</button></a>
+                    </div>
+                    <% } %>
         </div>
         <% } else { %>
             <div class="cart-empty">
@@ -59,5 +70,5 @@
                 </div>
                 <a href="/" class="mainpage">Go Back</a>
             </div>
-         <% } %>
+            <% } %>
 </section>

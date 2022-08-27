@@ -14,7 +14,11 @@ const adminController = () => {
               return res.render('admin/manageItem', {items : items})
           },
           postItem (req, res) {
-              const { name, price, image } = req.body;
+              const { name,category, price, image } = req.body;
+              name = name.trim();
+              price = price.trim();
+              image = image.trim();
+              category = category.trim();
               if(!name || !price || !image){
                   req.flash("error","All field is mandotory");
                   return res.redirect('/admin/manage-items');
@@ -22,6 +26,7 @@ const adminController = () => {
 
               const menu = new Menu( {
                   name: name,
+                  category: category,
                   price: price,
                   image: image
               });
@@ -36,7 +41,12 @@ const adminController = () => {
           },
           async updateItem (req, res) {
             //   console.log(req.body);
-              var {id, name, price, image} = req.body;
+              var {id, name,category, price, image} = req.body;
+              id = id.trim();
+              price = price.trim();
+              image = image.trim();
+              name = name.trim();
+              category = category.trim();
               if(id === ''){
                   req.flash('Id is requied');
                   return res.redirect('/admin/manage-items');
@@ -44,22 +54,24 @@ const adminController = () => {
               
               const items = await Menu.find({ _id : id});
               const item = items[0];
-              if( name === ''){
-                  console.log("inside name");
+              if( name === ''){                  
                   name = item.name;
               }
-              if(price === ''){
-                console.log("inside price");
+              if( category === ''){                  
+                category = item.category;
+              }
+              if(price === ''){                
                   price = item.price;
               }
-              if(image === ''){
-                console.log("inside image");
+
+              if(image === ''){               
                   image = item.image;
               }
 
               const updateDoc = {
                 $set :{
                     name : name,
+                    category: category,
                     price : price,
                     image : image
                 }
@@ -76,6 +88,7 @@ const adminController = () => {
           },
           deleteItem (req, res) {
              var {id} = req.body;
+             id = id.trim();
              Menu.deleteOne({_id : id}, (err, result) => {
                 if(err){
                     console.log(err);

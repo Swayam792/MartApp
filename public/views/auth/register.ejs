@@ -1,13 +1,15 @@
 <section class="login">
     <form action="/register" method="POST" class="signup-container"   >
         <% if(messages.error) { %>
+            <span style="color: red; font-size: 13px"><%= messages.error %></span>
+        <% } %>
         <span class="email-text">Username</span>
         <input name="username" class="input-item" type="text" placeholder="Enter Your username">
         <span class="email-text">Email</span>
         <input name="email" class="input-item" type="email" placeholder="Enter Your email">
         <span class="email-text">Password</span>
         <input name="password" class="input-item" type="password" placeholder="Enter Your Password">
-        <% } %>
+        
         <div class="login-noacc">
             <button type="submit" class = "login-btn">SignUp</button>
             <a class="signup" href="/login">Already have account?</a>
