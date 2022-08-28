@@ -18,7 +18,7 @@
 
     <nav class="navbar">
         <a href="/">Home</a>
-        <% if(user?.role === 'admin') { %>
+        <% if(user && user.role === 'admin') { %>
             <a href="/admin/manage-items">My Products</a>
             <a href="/admin/manage-orders">All Orders</a>
         <% } else { %>
@@ -27,7 +27,7 @@
             <a href="/#categories">Categories</a>        
             <a href="/#blogs">Blogs</a>
         <% } %>
-        <% if(user && user?.role != 'admin') { %>
+        <% if(user && user.role != 'admin') { %>
            <a href="/track-order">My Orders</a>
         <% } %>
     </nav>
