@@ -73,8 +73,8 @@ app.use((req, res, next) => {
 
 // Set Template engine
 app.use(expressLayouts);
-app.set('views', path.join(__dirname, '/public/views'));
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/public/views'));
 
 app.get('/', (req, res) => {    
     res.status(200).render('home');
