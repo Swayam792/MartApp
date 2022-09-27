@@ -32,7 +32,7 @@
             <div class="half order-links">
                 <a href="/track-order/<%= order._id %>">Get My Order Details</a>
             </div>
-        </div>   
+        </div>  
 
 
 
@@ -40,6 +40,24 @@
     <% } else { %>
          <h2 style="text-align: center; font-size: 20px">No Order Till Now</h2>
     <% } %>
+
+    <!-- // start enditing -->
+    <!-- <div class="container"> 
+        <div class="product-slider">     
+            <% if(orders.length) {%>
+                <% for(let order of Object.values(orders)) { %>
+                <div class="box">
+                    <img src="https://w7.pngwing.com/pngs/276/595/png-transparent-bag-of-vegetables-paper-plastic-bag-shopping-bags-trolleys-grocery-store-shopping-bag-food-supermarket-reusable-shopping-bag.png" style="width: 100px; height:100px"  alt="">                  
+                   
+                    <button class="btn add-to-cart"><a href="/track-order/<%= order._id %>"></a> View Details</button>
+                </div>    
+                <% } %>
+            <% } %>          
+        </div>
+    </div> -->
+
+    <!-- End editing -->
+
     <!-- <div class="order-container"> 
         <div class="half order-ids">
              <p>hgvdyfyskks765379836782</p>

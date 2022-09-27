@@ -22,8 +22,8 @@ const userController = () =>{
             let f = false;
 
             // check email already exist or not
-            var userExist = await User.find({email : email});
-            if(userExist){
+            var userExist = await User.find({email : email});             
+            if(userExist.length > 0){
                 req.flash('error', 'Email already taken');           
                 return res.redirect('/register');
             }
