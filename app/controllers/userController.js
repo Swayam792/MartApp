@@ -39,7 +39,9 @@ const userController = () =>{
             
             
             user.save()
-            .then(() => {
+            .then((data) => {
+                // res.locals.user = data;
+                console.log(data);
                 return res.redirect('/');
             }).catch((err) => {
                 req.flash('error', 'Something wents wrong');
